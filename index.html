@@ -1,0 +1,1144 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>msdsform.com</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="KKDİK Ek-2 ve SEA kriterlerine göre karışım sınıflandırması ve 16 bölümlü Türkçe Güvenlik Bilgi Formu hazırlama sistemi. Her sınıflandırma sonucu, dayandığı kural ve veriyle birlikte kaydedilir.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://msdsform.com/">
+<meta property="og:title" content="msdsform.com · Güvenlik Bilgi Formu Hazırlama Sistemi">
+<meta property="og:description" content="Reçeteden KDU onayına ve yayıma kadar GBF sürecini tek platformda yürütün. Her sonuç gerekçesiyle saklanır.">
+<meta name="theme-color" content="#F3F5F8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D1118" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='7' y='7' width='18' height='18' rx='1.5' transform='rotate(45 16 16)' fill='white' stroke='%23D6131B' stroke-width='2.6'/%3E%3Cpath d='M11.2 16.4l3.3 3.3 6.4-7' fill='none' stroke='%231F3FA6' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Yerleşim: belge kâğıdı zemininde tek akış. Hero'da canlı bir gerekçe kaydı; GHS kırmızısı yalnızca piktogram ve filigranda, mürekkep mavisi onay damgası ve eylemlerde. */
+:root{
+  --paper:#F3F5F8;
+  --sheet:#FFFFFF;
+  --band:#E8ECF2;
+  --ink:#121821;
+  --ink-2:#4D5868;
+  --ink-3:#6F7989;
+  --rule:#D3D9E2;
+  --rule-soft:#E4E8EE;
+  --stamp:#1F3FA6;
+  --stamp-hover:#18338A;
+  --stamp-soft:#E6EBFA;
+  --on-stamp:#FFFFFF;
+  --ghs:#D6131B;
+  --core-bg:#121821;
+  --core-fg:#F3F5F8;
+  --core-muted:#A9B3C2;
+  --core-accent:#93A8FF;
+  --ok:#1C7448;  --ok-soft:#E1F2E8;
+  --warn:#8F5600; --warn-soft:#FAEFD9;
+  --bad:#B3241C; --bad-soft:#FBE5E2;
+  --na:#566173;  --na-soft:#E9EDF2;
+  --picto-bg:#FFFFFF;
+  --picto-ink:#111111;
+  --picto-red:#E3000F;
+  --shadow:rgba(18,24,33,.20);
+
+  --f-display:"Archivo","Arial Narrow",Arial,system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0D1118; --sheet:#151B25; --band:#111720;
+    --ink:#E7EBF1; --ink-2:#A3ADBC; --ink-3:#7F899A;
+    --rule:#2A3341; --rule-soft:#1E2631;
+    --stamp:#93A8FF; --stamp-hover:#B3C2FF; --stamp-soft:#1B2547; --on-stamp:#0D1118;
+    --ghs:#FF5047;
+    --core-bg:#1D2533; --core-fg:#E7EBF1; --core-muted:#9AA5B6; --core-accent:#93A8FF;
+    --ok:#62CF94; --ok-soft:#11301F;
+    --warn:#F0B54E; --warn-soft:#38290C;
+    --bad:#FF7B70; --bad-soft:#3A1614;
+    --na:#A6B0BE; --na-soft:#1F2630;
+    --shadow:rgba(0,0,0,.55);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0D1118; --sheet:#151B25; --band:#111720;
+  --ink:#E7EBF1; --ink-2:#A3ADBC; --ink-3:#7F899A;
+  --rule:#2A3341; --rule-soft:#1E2631;
+  --stamp:#93A8FF; --stamp-hover:#B3C2FF; --stamp-soft:#1B2547; --on-stamp:#0D1118;
+  --ghs:#FF5047;
+  --core-bg:#1D2533; --core-fg:#E7EBF1; --core-muted:#9AA5B6; --core-accent:#93A8FF;
+  --ok:#62CF94; --ok-soft:#11301F;
+  --warn:#F0B54E; --warn-soft:#38290C;
+  --bad:#FF7B70; --bad-soft:#3A1614;
+  --na:#A6B0BE; --na-soft:#1F2630;
+  --shadow:rgba(0,0,0,.55);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px));-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
+img,svg{max-width:100%}
+a{color:var(--stamp)}
+h1,h2,h3,h4,p,figure{margin:0}
+h1,h2,h3,h4{text-wrap:balance}
+[hidden]{display:none!important}
+p{text-wrap:pretty}
+:focus-visible{outline:2px solid var(--stamp);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+.wrap{width:100%;max-width:1200px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:720px){
+  .wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}
+}
+
+/* Tipografi */
+.eyebrow{font:500 12.5px/1.3 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--stamp)}
+.h1{font-family:var(--f-display);font-stretch:114%;font-weight:770;font-size:clamp(38px,5.6vw,68px);line-height:1.02;letter-spacing:-.03em}
+.h1 em{font-style:normal;color:var(--stamp)}
+.h2{font-family:var(--f-display);font-stretch:110%;font-weight:720;font-size:clamp(30px,3.7vw,46px);line-height:1.08;letter-spacing:-.022em}
+.h3{font-family:var(--f-display);font-stretch:106%;font-weight:660;font-size:19px;line-height:1.28;letter-spacing:-.005em}
+.lead{font-size:18px;line-height:1.62;color:var(--ink-2);max-width:65ch}
+.body-sm{font-size:15px;line-height:1.6;color:var(--ink-2)}
+.mono-label{font:500 11.5px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+
+/* Düğmeler */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:8px;border:1px solid transparent;font:600 15px/1 var(--f-body);text-decoration:none;cursor:pointer;transition:background-color .15s,border-color .15s,color .15s}
+.btn-primary{background:var(--stamp);color:var(--on-stamp)}
+.btn-primary:hover{background:var(--stamp-hover)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+.btn-ghost:hover{border-color:var(--ink-3)}
+.btn-sm{min-height:34px;padding:0 12px;font-size:13px;font-weight:500}
+
+/* Üst bilgi */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--paper);background:color-mix(in srgb,var(--paper) 90%,transparent);-webkit-backdrop-filter:saturate(1.3) blur(10px);backdrop-filter:saturate(1.3) blur(10px);border-bottom:1px solid var(--rule)}
+.header-row{display:flex;align-items:center;justify-content:space-between;gap:20px;height:66px}
+.brand{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-family:var(--f-display);font-stretch:118%;font-weight:760;font-size:19px;letter-spacing:-.01em;flex:none}
+.brand .tld{color:var(--ink-3);font-weight:500}
+.mark{width:30px;height:30px;flex:none}
+.mark .frame{fill:var(--sheet);stroke:var(--ghs)}
+.mark .tick{fill:none;stroke:var(--stamp)}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a{color:var(--ink-2);text-decoration:none;font-size:14.5px;font-weight:500;padding:8px 11px;border-radius:6px;white-space:nowrap}
+.nav a:hover{color:var(--ink);background:var(--rule-soft)}
+.header-end{display:flex;align-items:center;gap:10px}
+.menu-toggle{display:none;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid var(--rule);border-radius:8px;background:var(--sheet);color:var(--ink);cursor:pointer}
+.menu-toggle svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round}
+@media (max-width:1080px){
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--rule);padding-block:6px 14px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));box-shadow:0 24px 30px -26px var(--shadow)}
+  .nav.open{display:flex}
+  .nav a{padding:13px 4px;font-size:16px;border-bottom:1px solid var(--rule-soft);border-radius:0}
+  .nav a:last-child{border-bottom:0}
+  .nav a:hover{background:transparent}
+  .menu-toggle{display:inline-flex}
+}
+@media (max-width:520px){.header-cta{display:none}}
+
+/* Bölümler */
+.section{padding-block:clamp(72px,9vw,120px)}
+.section > .wrap{display:grid;gap:clamp(36px,4.5vw,60px)}
+.band{background:var(--band)}
+.sec-head{display:grid;gap:16px;max-width:780px}
+
+/* Hero */
+.hero{padding-block:clamp(44px,6.5vw,92px) clamp(64px,8vw,112px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,540px);gap:clamp(40px,5vw,80px);align-items:center}
+.hero-copy{display:grid;gap:26px;align-content:start}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-meta{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;color:var(--ink-2)}
+.hero-meta li{display:inline-flex;align-items:center;gap:9px}
+.hero-meta li::before{content:"";width:7px;height:7px;flex:none;transform:rotate(45deg);border:1.5px solid var(--ghs)}
+@media (max-width:980px){.hero-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Gerekçe kaydı (hero kartı) */
+.record{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;box-shadow:0 1px 0 var(--rule-soft),0 34px 64px -38px var(--shadow);overflow:hidden;min-width:0}
+.record-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 20px;border-bottom:1px solid var(--rule-soft);background:var(--paper)}
+.record-body{display:grid;gap:18px;padding:18px 20px 20px}
+.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 16px;margin:0;font-size:14px}
+.kv dt{color:var(--ink-3)}
+.kv dd{margin:0;font-weight:500;min-width:0}
+.table-scroll{overflow-x:auto;min-width:0}
+.comp{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums}
+.comp th{font:500 10.5px/1.2 var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:0 6px 8px;border-bottom:1px solid var(--rule);white-space:nowrap}
+.comp td{padding:8px 6px;border-bottom:1px solid var(--rule-soft);vertical-align:middle;white-space:nowrap}
+.comp th:first-child,.comp td:first-child{padding-left:0}
+.comp th:last-child,.comp td:last-child{padding-right:0}
+.comp .num{text-align:right;font-family:var(--f-mono);font-size:13px}
+.comp .code{font-family:var(--f-mono);font-size:12.5px}
+.comp .muted{color:var(--ink-3)}
+.comp .cas,.comp .cls-m{display:block;font:400 11px/1.3 var(--f-mono);color:var(--ink-3)}
+.comp .cls-m{display:none}
+@media (max-width:480px){
+  .record-head{flex-wrap:wrap;padding-inline:16px}
+  .record-body{padding:16px}
+  .record-foot{padding-inline:16px}
+  .comp th:nth-child(2),.comp td:nth-child(2){display:none}
+  .comp .cls-m{display:block}
+}
+.comp tr.live td{background:var(--stamp-soft)}
+.comp tr.live td:first-child{box-shadow:-6px 0 0 var(--stamp-soft)}
+.comp tr.live td:last-child{box-shadow:6px 0 0 var(--stamp-soft)}
+.tag{display:inline-block;font:500 11px/1 var(--f-mono);padding:4px 7px;border-radius:4px;white-space:nowrap}
+.tag.in{background:var(--stamp-soft);color:var(--stamp)}
+.comp tr.live .tag.in{background:var(--sheet)}
+.tag.out{background:var(--na-soft);color:var(--na)}
+.slider{display:grid;gap:6px}
+.slider label{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;color:var(--ink-2)}
+.slider label b{font:600 13.5px var(--f-mono);color:var(--ink)}
+.slider input{width:100%;margin:0;height:26px;accent-color:var(--stamp);cursor:pointer}
+.sum{display:grid;gap:8px}
+.sum-line{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px;color:var(--ink-2)}
+.sum-line strong{font:600 19px/1 var(--f-mono);color:var(--ink)}
+.sum-line .cmp{font:500 13px var(--f-mono);color:var(--ink-3);margin-left:6px}
+.meter{position:relative;height:10px;border-radius:999px;background:var(--rule-soft)}
+.meter-fill{position:absolute;left:0;top:0;bottom:0;width:52.5%;border-radius:inherit;background:var(--ink-3);transition:width .2s ease,background-color .2s}
+.record[data-state="hit"] .meter-fill{background:var(--ghs)}
+.meter-mark{position:absolute;left:50%;top:-5px;bottom:-5px;width:2px;margin-left:-1px;background:var(--ink)}
+.meter-scale{position:relative;display:flex;justify-content:space-between;font:400 11px/1 var(--f-mono);color:var(--ink-3)}
+.meter-scale .mid{position:absolute;left:50%;transform:translateX(-50%);color:var(--ink);font-weight:500}
+.result{display:grid;grid-template-columns:58px minmax(0,1fr);gap:14px;align-items:center;padding:14px;border-radius:8px;background:var(--na-soft);transition:background-color .2s}
+.record[data-state="hit"] .result{background:var(--bad-soft)}
+.picto{width:58px;height:58px;display:block;transition:opacity .2s,filter .2s}
+.record[data-state="miss"] .picto{opacity:.25;filter:grayscale(1)}
+.result-title{font-family:var(--f-display);font-stretch:106%;font-weight:680;font-size:17px;line-height:1.25}
+.result-sub{font-size:14px;line-height:1.5;color:var(--ink-2);margin-top:3px}
+.result-sub code{font:600 13px var(--f-mono);color:var(--ink)}
+.result-sub b{color:var(--ink)}
+.record-foot{padding:11px 20px;border-top:1px solid var(--rule-soft);font-size:12.5px;color:var(--ink-3);background:var(--paper)}
+
+/* Öne çıkanlar şeridi */
+.facts{background:var(--sheet);border-block:1px solid var(--rule)}
+.facts-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.fact{display:grid;gap:4px;align-content:start;padding:24px;border-left:1px solid var(--rule-soft)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact-k{font-family:var(--f-display);font-stretch:112%;font-weight:700;font-size:18px;line-height:1.3}
+.fact-v{font-size:14px;color:var(--ink-2)}
+@media (max-width:900px){
+  .facts-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fact{padding-left:0;border-left:0;border-top:1px solid var(--rule-soft)}
+  .fact:nth-child(-n+2){border-top:0}
+  .fact:nth-child(even){padding-left:24px;border-left:1px solid var(--rule-soft)}
+}
+@media (max-width:520px){
+  .facts-row{grid-template-columns:minmax(0,1fr)}
+  .facts-row .fact{padding:18px 0;border-left:0;border-top:1px solid var(--rule-soft)}
+  .facts-row .fact:first-child{border-top:0}
+}
+
+/* Süreç adımları */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 36px}
+.step{display:grid;gap:10px;align-content:start;padding-top:18px;border-top:2px solid var(--ink)}
+.step-n{font:500 12px/1 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--stamp)}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.steps{grid-template-columns:minmax(0,1fr);gap:30px}}
+
+/* Mevzuat */
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(36px,5vw,80px);align-items:start}
+.split-copy{display:grid;gap:20px;align-content:start}
+@media (max-width:900px){.split{grid-template-columns:minmax(0,1fr)}}
+.refs{margin:0;display:grid;border-top:1px solid var(--rule)}
+.ref-row{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:6px 24px;padding-block:17px;border-bottom:1px solid var(--rule)}
+.ref-row dt{font:600 14.5px/1.45 var(--f-mono);color:var(--stamp)}
+.ref-row dd{margin:0;font-size:15.5px;color:var(--ink-2)}
+.ref-row dd b{display:block;color:var(--ink);font-weight:600}
+@media (max-width:560px){.ref-row{grid-template-columns:minmax(0,1fr)}}
+.callout{display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;align-items:start;padding:20px;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius)}
+.seal{width:52px;height:52px}
+.seal circle{fill:none;stroke:var(--stamp)}
+.seal text{fill:var(--stamp);font:600 13px var(--f-mono);letter-spacing:.06em}
+.callout p{font-size:15px;color:var(--ink-2)}
+.callout b{color:var(--ink)}
+
+/* Yetenekler */
+.legend{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:14px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:9px}
+.glyph{width:9px;height:9px;flex:none;display:inline-block}
+.glyph.have{background:var(--stamp);transform:rotate(45deg)}
+.glyph.plan{border:1.6px solid var(--ink-3);border-radius:50%;width:10px;height:10px}
+.cap-group{display:grid;gap:18px}
+.cap-group-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+.cap-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cap-grid.roadmap{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cap{display:grid;gap:10px;align-content:start;padding:22px 22px 20px;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius)}
+.cap.plan{background:transparent;border:1.5px dashed var(--rule)}
+.cap-title{display:flex;align-items:baseline;gap:12px}
+.cap-title .glyph{transform:translateY(-2px) rotate(45deg)}
+.cap-title .glyph.plan{transform:translateY(-1px)}
+.cap-tags{font:400 12px/1.4 var(--f-mono);color:var(--ink-3)}
+@media (max-width:1000px){.cap-grid.roadmap{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.cap-grid,.cap-grid.roadmap{grid-template-columns:minmax(0,1fr)}}
+
+/* Belge ve onay akışı */
+.lifecycle{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(36px,5vw,80px);align-items:start}
+.lifecycle-copy{display:grid;gap:26px;align-content:start}
+@media (max-width:940px){.lifecycle{grid-template-columns:minmax(0,1fr)}}
+.stages{list-style:none;margin:0;padding:0;display:grid;border-left:2px solid var(--rule)}
+.stage{position:relative}
+.stage button{display:grid;grid-template-columns:26px minmax(0,1fr);gap:2px 12px;width:100%;padding:13px 16px 13px 18px;margin:0;border:0;border-radius:0 8px 8px 0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;transition:background-color .15s}
+.stage button:hover{background:var(--rule-soft)}
+.stage.active button{background:var(--sheet)}
+.stage.active::before{content:"";position:absolute;left:-2px;top:0;bottom:0;width:2px;background:var(--stamp)}
+.stage-n{font:500 12px/1.6 var(--f-mono);color:var(--ink-3)}
+.stage.active .stage-n{color:var(--stamp)}
+.stage-name{font-weight:600;font-size:16px}
+.stage-desc{grid-column:2;font-size:14.5px;color:var(--ink-2)}
+.stage:not(.active) .stage-desc{display:none}
+.impact{display:grid;gap:6px;padding:16px 18px;border:1px solid var(--rule);border-radius:var(--radius)}
+.impact p{font-size:14.5px;color:var(--ink-2)}
+
+.doc{position:relative;width:100%;max-width:560px;justify-self:end;background:var(--sheet);border:1px solid var(--rule);border-radius:6px;box-shadow:0 1px 0 var(--rule-soft),0 44px 74px -46px var(--shadow);padding:26px 26px 16px 34px;overflow:hidden}
+@media (max-width:940px){.doc{justify-self:stretch;max-width:none}}
+.doc-head{display:grid;gap:12px;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+.doc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.doc-title{font-family:var(--f-display);font-stretch:122%;font-weight:800;font-size:17px;line-height:1.15;letter-spacing:.03em;text-transform:uppercase}
+.doc-sub{font:400 11.5px/1.4 var(--f-mono);color:var(--ink-3);margin-top:4px}
+.doc-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 16px;margin:0;font-size:12.5px;transition:opacity .25s}
+.doc-meta div{display:flex;gap:6px;min-width:0}
+.doc-meta dt{color:var(--ink-3);white-space:nowrap}
+.doc-meta dd{margin:0;font-weight:500;min-width:0}
+.doc-sections{list-style:none;margin:0;padding:8px 0 0;display:grid;font-size:13px;transition:opacity .25s}
+.doc-sections li{position:relative;display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:8px;align-items:center;padding:5px 0;border-bottom:1px dotted var(--rule)}
+.doc-sections .n{font:500 11.5px var(--f-mono);color:var(--ink-3)}
+.doc-sections li.chg::before{content:"";position:absolute;left:-18px;top:5px;bottom:5px;width:3px;border-radius:2px;background:var(--stamp)}
+.doc-sections .chg-tag{font:500 10px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--stamp)}
+.doc-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 12px;padding-top:12px;font:400 11px/1.4 var(--f-mono);color:var(--ink-3)}
+.doc-foot .key{display:inline-flex;align-items:center;gap:6px}
+.doc-foot .key::before{content:"";width:3px;height:12px;border-radius:2px;background:var(--stamp)}
+.watermark{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;transition:opacity .3s}
+.watermark span{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:clamp(60px,10vw,104px);letter-spacing:.06em;color:var(--ghs);opacity:.13;transform:rotate(-30deg)}
+.doc[data-stage="onay"] .watermark,.doc[data-stage="yayim"] .watermark,.doc[data-stage="kaldirma"] .watermark{opacity:0}
+.stamp{position:absolute;right:28px;bottom:64px;display:grid;gap:3px;justify-items:center;padding:10px 16px;border:2.5px solid currentColor;border-radius:6px;color:var(--stamp);background:var(--sheet);background:color-mix(in srgb,var(--sheet) 82%,transparent);font:600 14px/1.15 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;transform:rotate(-8deg);pointer-events:none}
+.stamp small{font:500 10.5px/1.2 var(--f-mono);letter-spacing:.03em;text-transform:none}
+.stamp.in{animation:stamp-in .32s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes stamp-in{from{opacity:0;transform:rotate(-8deg) scale(1.35)}to{opacity:1;transform:rotate(-8deg) scale(1)}}
+.doc[data-stage="kaldirma"] .stamp{color:var(--na)}
+.doc[data-stage="kaldirma"] .doc-sections,.doc[data-stage="kaldirma"] .doc-meta{opacity:.42}
+
+/* Çipler */
+.chip{display:inline-flex;align-items:center;font:500 11.5px/1 var(--f-mono);letter-spacing:.02em;padding:5px 8px;border-radius:5px;white-space:nowrap}
+.chip.bad{background:var(--bad-soft);color:var(--bad)}
+.chip.warn{background:var(--warn-soft);color:var(--warn)}
+.chip.na{background:var(--na-soft);color:var(--na)}
+.chip.ok{background:var(--ok-soft);color:var(--ok)}
+
+/* Tedarikçi modülü */
+.engine{display:grid;grid-template-columns:minmax(0,1fr) 60px minmax(0,1.05fr) 60px minmax(0,1fr);align-items:stretch}
+.engine-side{display:grid;gap:8px;align-content:start;padding:22px;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius)}
+.engine-side p{font-size:15px;color:var(--ink-2)}
+.engine-core{display:grid;gap:10px;justify-items:center;align-content:center;text-align:center;padding:26px 22px;border-radius:var(--radius);background:var(--core-bg);color:var(--core-fg)}
+.engine-core .mark{width:44px;height:44px}
+.engine-core .mark .frame{fill:none;stroke:var(--ghs)}
+.engine-core .mark .tick{stroke:var(--core-accent)}
+.engine-core strong{font-family:var(--f-display);font-stretch:110%;font-weight:700;font-size:19px;line-height:1.25}
+.engine-core span{font-size:14px;color:var(--core-muted)}
+.engine-arrow{display:grid;place-items:center;color:var(--ink-3)}
+.engine-arrow svg{width:36px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:860px){
+  .engine{grid-template-columns:minmax(0,1fr)}
+  .engine-arrow{height:46px}
+  .engine-arrow svg{transform:rotate(90deg)}
+}
+.why{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(36px,5vw,72px);align-items:start}
+.why-copy{display:grid;gap:18px;align-content:start}
+.why-copy p{color:var(--ink-2)}
+@media (max-width:940px){.why{grid-template-columns:minmax(0,1fr)}}
+.report{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;overflow:hidden;box-shadow:0 1px 0 var(--rule-soft),0 34px 64px -40px var(--shadow);min-width:0}
+.report-head{display:grid;gap:10px;padding:16px 20px;border-bottom:1px solid var(--rule-soft)}
+.report-title{font-weight:600;font-size:16px;line-height:1.35}
+.report-counts{display:flex;flex-wrap:wrap;gap:6px}
+.findings{list-style:none;margin:0;padding:0}
+.finding{display:grid;grid-template-columns:140px minmax(0,1fr);gap:6px 16px;padding:15px 20px;border-bottom:1px solid var(--rule-soft)}
+.finding:last-child{border-bottom:0}
+.finding .chip{justify-self:start;align-self:start;margin-top:2px}
+.finding b{font-weight:600;font-size:14.5px}
+.finding p{font-size:14px;line-height:1.55;color:var(--ink-2);margin-top:2px}
+.finding .src{display:block;margin-top:6px;font:400 11.5px/1.4 var(--f-mono);color:var(--ink-3)}
+@media (max-width:520px){.finding{grid-template-columns:minmax(0,1fr)}}
+.report-foot{padding:12px 20px;font-size:12.5px;color:var(--ink-3);background:var(--paper);border-top:1px solid var(--rule-soft)}
+.sub{display:grid;gap:22px}
+.sub-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+.mod-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 32px}
+.mod-item{display:grid;gap:8px;align-content:start}
+.mod-item p{font-size:15px;color:var(--ink-2)}
+@media (max-width:900px){.mod-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.mod-grid{grid-template-columns:minmax(0,1fr);gap:26px}}
+.benefits{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.benefit{display:grid;gap:8px;align-content:start;padding:22px;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius)}
+.benefit-k{font-family:var(--f-display);font-stretch:112%;font-weight:720;font-size:21px;line-height:1.2}
+.benefit p{font-size:14.5px;color:var(--ink-2)}
+@media (max-width:1000px){.benefits{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.benefits{grid-template-columns:minmax(0,1fr)}}
+.principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.principle{display:grid;gap:8px;align-content:start;padding:20px 22px;border:1.5px dashed var(--rule);border-radius:var(--radius)}
+.principle p{font-size:14.5px;color:var(--ink-2)}
+@media (max-width:860px){.principles{grid-template-columns:minmax(0,1fr)}}
+
+/* Kurumsal */
+.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 40px}
+.feature{display:grid;grid-template-columns:42px minmax(0,1fr);gap:4px 16px;align-content:start}
+.feature-icon{grid-row:span 2;width:42px;height:42px;display:grid;place-items:center;border-radius:9px;background:var(--stamp-soft);color:var(--stamp)}
+.feature-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.feature p{font-size:15px;color:var(--ink-2)}
+@media (max-width:900px){.features{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.features{grid-template-columns:minmax(0,1fr);gap:28px}}
+.disclaimer{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:8px 28px;padding:22px 24px;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius)}
+.disclaimer p{font-size:14.5px;color:var(--ink-2);max-width:75ch}
+@media (max-width:640px){.disclaimer{grid-template-columns:minmax(0,1fr)}}
+
+/* İletişim */
+.contact{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(36px,5vw,80px);align-items:start}
+.contact-copy{display:grid;gap:22px;align-content:start}
+@media (max-width:900px){.contact{grid-template-columns:minmax(0,1fr)}}
+.contact-info{margin:0;display:grid;border-top:1px solid var(--rule)}
+.contact-row{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:12px;align-items:center;min-height:58px;padding-block:10px;border-bottom:1px solid var(--rule)}
+.contact-row dd{margin:0;font-weight:500;font-size:16px;overflow-wrap:anywhere}
+.contact-row dd a{color:var(--ink);text-decoration:none}
+.contact-row dd a:hover{text-decoration:underline}
+.form{display:grid;gap:16px;padding:clamp(20px,3vw,30px);background:var(--sheet);border:1px solid var(--rule);border-radius:12px;min-width:0}
+.form-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:560px){.form-row{grid-template-columns:minmax(0,1fr)}}
+.field{display:grid;gap:6px;min-width:0}
+.field label{font-size:13.5px;font-weight:500}
+.field .opt{color:var(--ink-3);font-weight:400}
+.field input,.field select,.field textarea{width:100%;min-width:0;font:400 15px/1.4 var(--f-body);color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:7px;padding:11px 12px}
+.field textarea{min-height:116px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--stamp);outline-offset:-1px;border-color:transparent}
+.form-end{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px}
+.form-note{font-size:13px;color:var(--ink-3);max-width:44ch}
+.form-status{font-size:14px;color:var(--ok);min-height:1em}
+.form-status:empty{display:none}
+
+/* Alt bilgi */
+.site-footer{border-top:1px solid var(--rule);padding-block:44px 52px}
+.footer-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:28px 48px}
+.footer-brand{display:grid;gap:12px;max-width:380px}
+.footer-brand p{font-size:14px;color:var(--ink-2)}
+.footer-nav{display:grid;grid-template-columns:repeat(2,minmax(0,auto));gap:10px 36px}
+.footer-nav a{color:var(--ink-2);text-decoration:none;font-size:14px}
+.footer-nav a:hover{color:var(--ink)}
+.footer-meta{margin-top:36px;padding-top:20px;border-top:1px solid var(--rule-soft);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:13px;color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#top" aria-label="msdsform.com ana sayfa">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect class="frame" x="7" y="7" width="18" height="18" rx="1.5" transform="rotate(45 16 16)" stroke-width="2.6"/><path class="tick" d="M11.2 16.4l3.3 3.3 6.4-7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>msdsform<span class="tld">.com</span></span>
+    </a>
+    <nav class="nav" id="site-nav" aria-label="Ana menü">
+      <a href="#sistem">Sistem</a>
+      <a href="#mevzuat">Mevzuat</a>
+      <a href="#yetenekler">Yetenekler</a>
+      <a href="#belge">Belge ve onay</a>
+      <a href="#tedarikci">Tedarikçi modülü</a>
+      <a href="#kurumsal">Kurumsal</a>
+      <a href="#iletisim">İletişim</a>
+    </nav>
+    <div class="header-end">
+      <a class="btn btn-primary btn-sm header-cta" href="#iletisim">Demo talep edin</a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menüyü aç">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">KKDİK Ek-2 ve SEA kriterlerine göre</span>
+        <h1 class="h1">Güvenlik Bilgi Formu, <em>gerekçesiyle</em> birlikte.</h1>
+        <p class="lead">msdsform, kimyasal karışımların zararlılık sınıflandırmasını mevzuat kriterlerine göre yapar ve 16 bölümlü Türkçe Güvenlik Bilgi Formunu hazırlar. Reçete girişinden KDU onayına ve yayıma kadar her adım tek platformda yürür. Her sonuç, dayandığı kural ve veriyle birlikte saklanır.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#iletisim">Demo talep edin</a>
+          <a class="btn btn-ghost" href="#yetenekler">Yetenekleri inceleyin</a>
+        </div>
+        <ul class="hero-meta">
+          <li>Web tabanlı, kurulum gerektirmez</li>
+          <li>Firma bazında veri yalıtımı</li>
+          <li>Türkiye veya AB’de barındırma</li>
+        </ul>
+      </div>
+
+      <figure class="record" id="record" data-state="hit" aria-label="Örnek gerekçe kaydı">
+        <div class="record-head">
+          <span class="mono-label">Gerekçe kaydı · örnek</span>
+          <span class="mono-label">Referans veri 2026.09</span>
+        </div>
+        <div class="record-body">
+          <dl class="kv">
+            <dt>Ürün</dt><dd>Yüzey temizleyici (örnek reçete)</dd>
+            <dt>Zararlılık sınıfı</dt><dd>Cilt aşınması/tahrişi</dd>
+            <dt>Kural</dt><dd>SEA Ek-1, 3.2.3.3 · Toplama yöntemi</dd>
+          </dl>
+          <div class="table-scroll">
+            <table class="comp">
+              <thead>
+                <tr><th>Bileşen</th><th>Sınıflandırma</th><th class="num">Kons.</th><th>Toplama</th></tr>
+              </thead>
+              <tbody>
+                <tr class="live"><td>Bileşen A<span class="cls-m">Skin Irrit. 2</span></td><td class="code">Skin Irrit. 2</td><td class="num" id="a-val">%6,0</td><td><span class="tag in" id="a-tag">dahil</span></td></tr>
+                <tr><td>Bileşen B<span class="cls-m">Skin Irrit. 2</span></td><td class="code">Skin Irrit. 2</td><td class="num">%4,5</td><td><span class="tag in">dahil</span></td></tr>
+                <tr><td>Bileşen C<span class="cls-m">Skin Irrit. 2</span></td><td class="code">Skin Irrit. 2</td><td class="num">%0,8</td><td><span class="tag out">%1 altında</span></td></tr>
+                <tr><td>Su<span class="cas">CAS 7732-18-5</span></td><td class="muted">Sınıflandırılmamış</td><td class="num" id="w-val">%88,7</td><td class="muted">–</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="slider">
+            <label for="conc-a"><span>Bileşen A konsantrasyonunu değiştirin</span><b id="a-val-2">%6,0</b></label>
+            <input type="range" id="conc-a" min="0" max="12" step="0.1" value="6" aria-valuetext="%6,0">
+          </div>
+          <div class="sum">
+            <div class="sum-line"><span>Σ Skin Irrit. 2 (%1 ve üzeri)</span><span><strong id="sum-val">%10,5</strong><span class="cmp" id="sum-cmp">≥ %10</span></span></div>
+            <div class="meter" aria-hidden="true"><div class="meter-fill" id="meter-fill"></div><div class="meter-mark"></div></div>
+            <div class="meter-scale" aria-hidden="true"><span>%0</span><span class="mid">eşik %10</span><span>%20</span></div>
+          </div>
+          <div class="result" aria-live="polite">
+            <svg class="picto" viewBox="0 0 100 100" role="img" aria-label="GHS07 ünlem işareti">
+              <rect x="19" y="19" width="62" height="62" transform="rotate(45 50 50)" fill="var(--picto-bg)" stroke="var(--picto-red)" stroke-width="7"/>
+              <path d="M45 27h10l-2.2 34h-5.6z" fill="var(--picto-ink)"/>
+              <circle cx="50" cy="71" r="5.4" fill="var(--picto-ink)"/>
+            </svg>
+            <div>
+              <div class="result-title" id="res-title">Cilt tahrişi, Kategori 2</div>
+              <div class="result-sub" id="res-sub"><code>H315</code> Cilt tahrişine yol açar. · Uyarı kelimesi: <b>Dikkat</b></div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="record-foot">Temsilî bileşenlerle hazırlanmış örnek hesaptır. Sistem, her zararlılık sonucu için bu kaydı otomatik oluşturur.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Öne çıkanlar -->
+  <section class="facts" aria-label="Öne çıkanlar">
+    <div class="wrap facts-row">
+      <div class="fact"><span class="fact-k">16 bölüm</span><span class="fact-v">Türkçe GBF, PDF çıktısı</span></div>
+      <div class="fact"><span class="fact-k">SEA Ek-6, Bölüm 3</span><span class="fact-v">Uyumlaştırılmış sınıflandırma kaynağı</span></div>
+      <div class="fact"><span class="fact-k">SEA Ek-3 ve Ek-4</span><span class="fact-v">Resmî Türkçe zararlılık ve önlem ifadeleri</span></div>
+      <div class="fact"><span class="fact-k">KDU onayı</span><span class="fact-v">Yayım öncesi zorunlu iş akışı adımı</span></div>
+    </div>
+  </section>
+
+  <!-- Sistem -->
+  <section class="section" id="sistem">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Sistem hakkında</span>
+        <h2 class="h2">Reçeteden yayıma tek akış</h2>
+        <p class="lead">msdsform, karışımların zararlılık sınıflandırmasını ilgili mevzuat kriterlerine göre yapmak ve Güvenlik Bilgi Formlarını hazırlamak için geliştirilmiş web tabanlı bir kurumsal uygulamadır. Süreç tek platformda, aşağıdaki sırayla ilerler.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-n">Adım 1</span>
+          <h3 class="h3">Reçete girişi</h3>
+          <p class="body-sm">Bileşenler CAS, EC numarası veya madde adıyla tanımlanır. Konsantrasyon tam değer ya da aralık olarak girilir; toplam ve tutarlılık denetlenir.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">Adım 2</span>
+          <h3 class="h3">Eksik verinin tamamlanması</h3>
+          <p class="body-sm">Hesaplama için gereken parlama noktası, viskozite, pH gibi veriler bağlama göre sorulur. Veri yoksa değerlendirme muhafazakâr yapılır.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">Adım 3</span>
+          <h3 class="h3">Sınıflandırma</h3>
+          <p class="body-sm">Sağlık ve çevresel zararlılıklar için toplama ve hesaplama yöntemleri uygulanır. Özel konsantrasyon sınırları önceliklidir.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">Adım 4</span>
+          <h3 class="h3">Gerekçe kaydı</h3>
+          <p class="body-sm">Her sonuç için uygulanan kural, dikkate alınan bileşenler, kullanılan değerler ve eşikler kayıt altına alınır.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">Adım 5</span>
+          <h3 class="h3">Etiket ve belge</h3>
+          <p class="body-sm">Zararlılık işaretleri, uyarı kelimesi, zararlılık ve önlem ifadeleri öncelik kurallarına göre belirlenir. 16 bölümlü GBF PDF olarak oluşturulur.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">Adım 6</span>
+          <h3 class="h3">KDU onayı ve yayım</h3>
+          <p class="body-sm">Form, belgelendirilmiş Kimyasal Değerlendirme Uzmanı onaylamadan yayımlanmaz. Yayımlanan sürüm, girdileriyle birlikte arşivlenir.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Mevzuat -->
+  <section class="section band" id="mevzuat">
+    <div class="wrap split">
+      <div class="split-copy">
+        <span class="eyebrow">Mevzuat çerçevesi</span>
+        <h2 class="h2">Resmî mevzuat metinleriyle çalışır</h2>
+        <p class="lead">Sistem, Kimyasalların Kaydı, Değerlendirilmesi, İzni ve Kısıtlanması Hakkında Yönetmelik (KKDİK) ile Maddelerin ve Karışımların Sınıflandırılması, Etiketlenmesi ve Ambalajlanması Hakkında Yönetmelik (SEA) esas alınarak kurgulanmıştır.</p>
+        <div class="callout">
+          <svg class="seal" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23" stroke-width="2"/><circle cx="26" cy="26" r="18.5" stroke-width="1" stroke-dasharray="2 2.6"/><text x="26" y="30.5" text-anchor="middle">KDU</text></svg>
+          <p><b>KDU onayı zorunludur.</b> Hazırlanan form, belgelendirilmiş Kimyasal Değerlendirme Uzmanı tarafından incelenip onaylanmadan yayımlanamaz.</p>
+        </div>
+      </div>
+      <dl class="refs">
+        <div class="ref-row"><dt>KKDİK Ek-2</dt><dd><b>GBF içerik gereklilikleri</b>Formun bölümleri ve zorunlu alt başlıkları bu ekteki tanımlara göre oluşturulur.</dd></div>
+        <div class="ref-row"><dt>SEA kriterleri</dt><dd><b>Zararlılık sınıflandırması</b>Karışımlar, yönetmelikte tanımlanan kriterlere göre sınıflandırılır.</dd></div>
+        <div class="ref-row"><dt>SEA Ek-6, Bölüm 3</dt><dd><b>Uyumlaştırılmış sınıflandırma</b>Maddelerin uyumlaştırılmış sınıflandırma bilgileri bu bölümden alınır.</dd></div>
+        <div class="ref-row"><dt>SEA Ek-3</dt><dd><b>Zararlılık ifadeleri</b>H ifadeleri resmî Türkçe metinleriyle kullanılır.</dd></div>
+        <div class="ref-row"><dt>SEA Ek-4</dt><dd><b>Önlem ifadeleri</b>P ifadeleri resmî Türkçe metinleriyle kullanılır.</dd></div>
+        <div class="ref-row"><dt>TR ↔ AB</dt><dd><b>İhracat uyarısı</b>Bir maddenin AB mevzuatındaki sınıflandırması Türkiye’dekinden farklıysa sistem bilgilendirme yapar.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Yetenekler -->
+  <section class="section" id="yetenekler">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Yetenekler</span>
+        <h2 class="h2">İlk sürümde on modül, yol haritasında dört modül</h2>
+        <div class="legend">
+          <span><i class="glyph have" aria-hidden="true"></i>İlk sürümde mevcut</span>
+          <span><i class="glyph plan" aria-hidden="true"></i>Yol haritasında</span>
+        </div>
+      </div>
+
+      <div class="cap-group">
+        <div class="cap-group-head"><h3 class="h3">İlk sürümde mevcut</h3><span class="mono-label">10 modül</span></div>
+        <div class="cap-grid">
+          <article class="cap">
+            <div class="cap-title"><i class="glyph have" aria-hidden="true"></i><h3 class="h3">Reçete yönetimi</h3></div>
+            <p class="body-sm">Bileşenler CAS, EC numarası veya madde adıyla tanımlanır. Konsantrasyon tam değer veya aralık olarak girilir; toplam ve tutarlılık denetlenir.</p>
+            <span class="cap-tags">CAS · EC · tam değer / aralık</span>
+          </article>
+          <article class="cap">
+            <div class="cap-title"><i class="glyph have" aria-hidden="true"></i><h3 class="h3">Madde veri katmanı</h3></div>
+            <p class="body-sm">Uyumlaştırılmış sınıflandırma, özel konsantrasyon sınırları, M-katsayıları ve akut toksisite tahminleri, mevzuat kaynağıyla birlikte tutulur.</p>
+            <span class="cap-tags">Ek-6 · özel sınırlar · M · ATE</span>
+          </article>
+          <article class="cap">
+            <div class="cap-title"><i class="glyph have" aria-hidden="true"></i><h3 class="h3">Sınıflandırma motoru</h3></div>
+            <p class="body-sm">Sağlık ve çevresel zararlılıklar için toplama ve hesaplama yöntemleri uygulanır; özel konsantrasyon sınırları önceliklendirilir.</p>
+            <span class="cap-tags">toplama · hesaplama</span>
+          </article>
+          <article class="cap">
+            <div class="cap-title"><i class="glyph have" aria-hidden="true"></i><h3 class="h3">Eksik veri yönetimi</h3></div>
+            <p class="body-sm">Parlama noktası, viskozite, pH gibi veriler bağlama duyarlı sorularla istenir. Veri eksik kaldığında değerlendirme muhafazakâr yapılır.</p>
+            <span class="cap-tags">°C · mm²/s · pH</span>
+          </article>
+          <article class="cap">
+            <div class="cap-title"><i class="glyph have" aria-hidden="true"></i><h3 class="h3">Gerekçe kaydı</h3></div>
+            <p class="body-sm">Her zararlılık sonucu için uygulanan kural, dikkate alınan bileşenler, kullanılan değerler ve eşikler kayıt altına alınır.</p>
+            <span class="cap-tags">kural · bileşen · değer · eşik</span>
+          </article>
+          <article class="cap">
+            <div class="cap-title"><i class="glyph have" aria-hidden="true"></i><h3 class="h3">Etiket unsurları</h3></div>
+            <p class="body-sm">Zararlılık işaretleri, uyarı kelimesi, zararlılık ve önlem ifadeleri öncelik kurallarına göre belirlenir.</p>
+            <span class="cap-tags">GHS işaretleri · H · P</span>
+          </article>
+          <article class="cap">
+            <div class="cap-title"><i class="glyph have" aria-hidden="true"></i><h3 class="h3">Belge üretimi</h3></div>
+            <p class="body-sm">On altı bölümlü Türkçe GBF PDF olarak oluşturulur. Taslak sürümlerde filigran uygulanır.</p>
+            <span class="cap-tags">16 bölüm · PDF · filigran</span>
+          </article>
+          <article class="cap">
+            <div class="cap-title"><i class="glyph have" aria-hidden="true"></i><h3 class="h3">Onay ve sürüm yönetimi</h3></div>
+            <p class="body-sm">Taslak, inceleme, onay, yayım ve yürürlükten kaldırma aşamaları. Sürüm numarası, revizyon tarihi ve değişen bölümler işaretlenir.</p>
+            <span class="cap-tags">taslak → inceleme → onay → yayım</span>
+          </article>
+          <article class="cap">
+            <div class="cap-title"><i class="glyph have" aria-hidden="true"></i><h3 class="h3">Değişiklik etki analizi</h3></div>
+            <p class="body-sm">Reçete veya referans veri güncellendiğinde sınıflandırması etkilenen ürünler listelenir ve fark raporu üretilir.</p>
+            <span class="cap-tags">etkilenen ürünler · fark raporu</span>
+          </article>
+          <article class="cap">
+            <div class="cap-title"><i class="glyph have" aria-hidden="true"></i><h3 class="h3">İhracat uyarısı</h3></div>
+            <p class="body-sm">Bir maddenin Avrupa Birliği mevzuatındaki sınıflandırması Türkiye’dekinden farklıysa bilgilendirme yapılır.</p>
+            <span class="cap-tags">TR ↔ AB</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="cap-group">
+        <div class="cap-group-head"><h3 class="h3">Yol haritasında</h3><span class="mono-label">4 modül</span></div>
+        <div class="cap-grid roadmap">
+          <article class="cap plan">
+            <div class="cap-title"><i class="glyph plan" aria-hidden="true"></i><h3 class="h3">Tedarikçi formu aktarımı</h3></div>
+            <p class="body-sm">Tedarikçi GBF’lerinden bileşen ve özellik verisi yapılandırılmış biçimde çıkarılır ve kullanıcı doğrulamasına sunulur.</p>
+            <span class="cap-tags">tedarikçi GBF → veri</span>
+          </article>
+          <article class="cap plan">
+            <div class="cap-title"><i class="glyph plan" aria-hidden="true"></i><h3 class="h3">Maruziyet sınırları</h3></div>
+            <p class="body-sm">Mesleki maruziyet sınır değerleri formun sekizinci bölümüne otomatik aktarılır.</p>
+            <span class="cap-tags">Bölüm 8</span>
+          </article>
+          <article class="cap plan">
+            <div class="cap-title"><i class="glyph plan" aria-hidden="true"></i><h3 class="h3">Taşımacılık modülü</h3></div>
+            <p class="body-sm">On dördüncü bölüm için sınıflandırma önerisi oluşturulur.</p>
+            <span class="cap-tags">Bölüm 14</span>
+          </article>
+          <article class="cap plan">
+            <div class="cap-title"><i class="glyph plan" aria-hidden="true"></i><h3 class="h3">Kurumsal entegrasyon</h3></div>
+            <p class="body-sm">Reçete aktarımı ve belge dağıtımı için uygulama programlama arayüzü.</p>
+            <span class="cap-tags">API</span>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Belge ve onay -->
+  <section class="section band" id="belge">
+    <div class="wrap lifecycle">
+      <div class="lifecycle-copy">
+        <div class="sec-head">
+          <span class="eyebrow">Belge ve onay</span>
+          <h2 class="h2">Taslaktan yayıma, izlenebilir sürümler</h2>
+          <p class="lead">Her sürüm; sürüm numarası, revizyon tarihi ve değişen bölümlerin işaretiyle oluşturulur. Bir aşama seçerek belgenin o aşamadaki görünümünü inceleyin.</p>
+        </div>
+        <ol class="stages" id="stages">
+          <li class="stage"><button type="button" data-stage="taslak" aria-pressed="false"><span class="stage-n">1</span><span class="stage-name">Taslak</span><span class="stage-desc">Reçete ve sınıflandırma üzerinde çalışılır. PDF çıktısında “TASLAK” filigranı bulunur.</span></button></li>
+          <li class="stage active"><button type="button" data-stage="inceleme" aria-pressed="true"><span class="stage-n">2</span><span class="stage-name">İnceleme</span><span class="stage-desc">Form regülasyon uzmanına veya KDU’ya gönderilir. Önceki sürüme göre değişen bölümler işaretlidir.</span></button></li>
+          <li class="stage"><button type="button" data-stage="onay" aria-pressed="false"><span class="stage-n">3</span><span class="stage-name">Onay</span><span class="stage-desc">Belgelendirilmiş KDU formu onaylar. Onay yetkisi role bağlıdır; işlem kullanıcı, zaman ve gerekçeyle kaydedilir.</span></button></li>
+          <li class="stage"><button type="button" data-stage="yayim" aria-pressed="false"><span class="stage-n">4</span><span class="stage-name">Yayım</span><span class="stage-desc">Onaylı sürüm yayımlanır ve girdileri ile referans veri sürümüyle birlikte arşivlenir.</span></button></li>
+          <li class="stage"><button type="button" data-stage="kaldirma" aria-pressed="false"><span class="stage-n">5</span><span class="stage-name">Yürürlükten kaldırma</span><span class="stage-desc">Yerine yeni sürüm geçen form yürürlükten kaldırılır. Arşivde, birebir yeniden üretilebilir hâlde kalır.</span></button></li>
+        </ol>
+        <div class="impact">
+          <span class="mono-label">Değişiklik etki analizi</span>
+          <p>Bir reçete veya referans veri güncellendiğinde, sınıflandırması etkilenen tüm ürünler listelenir ve sürümler arası fark raporu üretilir.</p>
+        </div>
+      </div>
+
+      <div class="doc" id="doc" data-stage="inceleme" aria-label="Örnek GBF önizlemesi">
+        <div class="doc-head">
+          <div class="doc-top">
+            <div>
+              <div class="doc-title">Güvenlik Bilgi Formu</div>
+              <div class="doc-sub">KKDİK Ek-2’ye göre · Türkçe · örnek</div>
+            </div>
+            <span class="chip warn" id="doc-chip">İncelemede</span>
+          </div>
+          <dl class="doc-meta">
+            <div><dt>Ürün</dt><dd>Yüzey temizleyici</dd></div>
+            <div><dt>Sürüm</dt><dd>2.0</dd></div>
+            <div><dt>Revizyon</dt><dd>14.10.2026</dd></div>
+            <div><dt>Önceki</dt><dd>1.0 · 02.03.2026</dd></div>
+          </dl>
+        </div>
+        <ol class="doc-sections">
+          <li><span class="n">1</span><span>Madde/karışım ve şirket/iş yeri tanıtımı</span><span></span></li>
+          <li class="chg"><span class="n">2</span><span>Zararlılık tanımlanması</span><span class="chg-tag">değişti</span></li>
+          <li class="chg"><span class="n">3</span><span>Bileşimi/içeriği hakkında bilgi</span><span class="chg-tag">değişti</span></li>
+          <li><span class="n">4</span><span>İlk yardım önlemleri</span><span></span></li>
+          <li><span class="n">5</span><span>Yangınla mücadele önlemleri</span><span></span></li>
+          <li><span class="n">6</span><span>Kaza sonucu yayılmaya karşı önlemler</span><span></span></li>
+          <li><span class="n">7</span><span>Elleçleme ve depolama</span><span></span></li>
+          <li><span class="n">8</span><span>Maruz kalma kontrolleri/kişisel korunma</span><span></span></li>
+          <li><span class="n">9</span><span>Fiziksel ve kimyasal özellikler</span><span></span></li>
+          <li><span class="n">10</span><span>Kararlılık ve tepkime</span><span></span></li>
+          <li class="chg"><span class="n">11</span><span>Toksikolojik bilgiler</span><span class="chg-tag">değişti</span></li>
+          <li><span class="n">12</span><span>Ekolojik bilgiler</span><span></span></li>
+          <li><span class="n">13</span><span>Bertaraf etme bilgileri</span><span></span></li>
+          <li><span class="n">14</span><span>Taşımacılık bilgileri</span><span></span></li>
+          <li><span class="n">15</span><span>Mevzuat bilgileri</span><span></span></li>
+          <li class="chg"><span class="n">16</span><span>Diğer bilgiler</span><span class="chg-tag">değişti</span></li>
+        </ol>
+        <div class="doc-foot"><span class="key">Önceki sürüme göre değişen bölüm</span><span>Sayfa 1 / 9</span></div>
+        <div class="watermark" aria-hidden="true"><span>TASLAK</span></div>
+        <div class="stamp" id="doc-stamp" hidden><span id="stamp-main">Onaylandı</span><small id="stamp-sub">KDU · 14.10.2026</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tedarikçi modülü -->
+  <section class="section" id="tedarikci">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Ek modül · geliştirme planında</span>
+        <h2 class="h2">Tedarikçi GBF Analiz ve Doğrulama Modülü</h2>
+        <p class="lead">Ana sistem, piyasaya arz ettiğiniz karışımlar için GBF hazırlar. Bu ek modül süreci ters yönde ele alır: satın aldığınız madde ve karışımlarla gelen tedarikçi formlarını okur, doğrular, özetler ve sınıflandırır.</p>
+      </div>
+
+      <div class="engine">
+        <div class="engine-side">
+          <span class="mono-label">Ana sistem</span>
+          <h3 class="h3">Kendi karışımınız</h3>
+          <p>Reçete girilir, karışım sınıflandırılır, GBF hazırlanır ve KDU onayıyla yayımlanır.</p>
+        </div>
+        <div class="engine-arrow" aria-hidden="true"><svg viewBox="0 0 36 16"><path d="M2 8h30M25 2l7 6-7 6"/></svg></div>
+        <div class="engine-core">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect class="frame" x="7" y="7" width="18" height="18" rx="1.5" transform="rotate(45 16 16)" stroke-width="2.2"/><path class="tick" d="M11.2 16.4l3.3 3.3 6.4-7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <strong>Ortak sınıflandırma motoru</strong>
+          <span>Aynı kural seti iki yönde çalışır</span>
+        </div>
+        <div class="engine-arrow" aria-hidden="true"><svg viewBox="0 0 36 16"><path d="M34 8H4M11 2L4 8l7 6"/></svg></div>
+        <div class="engine-side">
+          <span class="mono-label">Ek modül</span>
+          <h3 class="h3">Tedarikçinin GBF’si</h3>
+          <p>Form okunur, veriler kaynak referansıyla çıkarılır, beyan bağımsız olarak denetlenir ve özetlenir.</p>
+        </div>
+      </div>
+
+      <div class="why">
+        <div class="why-copy">
+          <h3 class="h3">Neden gerekli?</h3>
+          <p>Kurumsal ölçekteki kimya firmaları yüzlerce tedarikçi formunu arşivlemek, bunları kimyasal risk değerlendirmesinde ve depolama planlamasında kullanmak ve güncelliklerini takip etmekle yükümlüdür. Bu formlar farklı tedarikçilerce, farklı biçim ve kalitede hazırlanır; içeriklerinin doğruluğu çoğu zaman denetlenmez.</p>
+          <p>Modülün teknik üstünlüğü, ana sistemdeki sınıflandırma motorunu ikinci bir amaçla kullanmasından gelir. Aynı kural seti bir yandan kendi ürününüzü sınıflandırır, diğer yandan tedarikçi beyanının doğruluğunu bağımsız olarak denetler.</p>
+        </div>
+        <figure class="report" aria-label="Örnek doğrulama raporu">
+          <div class="report-head">
+            <span class="mono-label">Doğrulama raporu · örnek</span>
+            <div class="report-title">Endüstriyel inceltici · Tedarikçi T-0142 · Revizyon 2.1</div>
+            <div class="report-counts"><span class="chip bad">1 tutarsızlık</span><span class="chip warn">2 uyarı</span><span class="chip na">1 değerlendirilemedi</span></div>
+          </div>
+          <ul class="findings">
+            <li class="finding">
+              <span class="chip bad">Tutarsız</span>
+              <div><b>Bölüm 2 ↔ Bölüm 14</b><p>Bölüm 2’de H411 beyan edilmiş; 14.5’te çevresel zarar “Hayır” olarak bildirilmiş.</p><span class="src">s. 2, §2.1 · s. 8, §14.5</span></div>
+            </li>
+            <li class="finding">
+              <span class="chip warn">Mevzuat farkı</span>
+              <div><b>Bölüm 3 · Toluen, CAS 108-88-3</b><p>Uyumlaştırılmış sınıflandırmadaki Repr. 2 (H361d) tedarikçi beyanında yer almıyor.</p><span class="src">s. 3, §3.2 · SEA Ek-6, Bölüm 3</span></div>
+            </li>
+            <li class="finding">
+              <span class="chip warn">Eksik</span>
+              <div><b>Bölüm 1.4</b><p>Acil durum telefon numarası bulunamadı.</p><span class="src">s. 1, §1.4</span></div>
+            </li>
+            <li class="finding">
+              <span class="chip na">Değerlendirilemedi</span>
+              <div><b>Bölüm 3 · Bileşim</b><p>İki bileşen aralık olarak bildirilmiş (%10–30). Hesaplanan sınıflandırmayla karşılaştırma yapılmadı, tutarsızlık beyanı üretilmedi.</p><span class="src">s. 3, §3.2</span></div>
+            </li>
+          </ul>
+          <figcaption class="report-foot">Her bulgu, belgedeki sayfa ve bölüm referansıyla sunulur. Bulgular bilgilendirme niteliğindedir.</figcaption>
+        </figure>
+      </div>
+
+      <div class="sub">
+        <div class="sub-head"><h3 class="h3">Modül yetenekleri</h3><span class="mono-label">12 başlık</span></div>
+        <div class="mod-grid">
+          <div class="mod-item"><h4 class="h3">Toplu aktarım</h4><p>Formlar tek tek veya toplu olarak yüklenir. Taranmış belgelerde metin tanıma uygulanır.</p></div>
+          <div class="mod-item"><h4 class="h3">Yapılandırılmış veri çıkarımı</h4><p>Sınıflandırma ve etiket unsurları, bileşim, fiziksel ve kimyasal özellikler, elleçleme ve depolama, maruziyet sınırları ve KKD, taşımacılık ve mevzuat bilgileri ilgili bölümlerden çıkarılır.</p></div>
+          <div class="mod-item"><h4 class="h3">Kaynak gösterimi</h4><p>Çıkarılan her veri, belgedeki sayfa ve bölüm referansıyla sunulur; kullanıcı yan yana karşılaştırarak doğrular.</p></div>
+          <div class="mod-item"><h4 class="h3">Biçimsel uygunluk denetimi</h4><p>On altı bölüm ve zorunlu alt başlıklar, Türkçe hazırlanma, revizyon tarihi, sürüm numarası, acil durum iletişim bilgisi ve hazırlayan uzman bilgisi denetlenir.</p></div>
+          <div class="mod-item"><h4 class="h3">İç tutarlılık denetimi</h4><p>Beyan edilen sınıflandırma, bildirilen bileşimden hesaplananla karşılaştırılır. H ifadeleri ile işaretler ve uyarı kelimesi, fiziksel özellikler ile alevlenirlik sınıfı, çevresel zararlılık ile taşımacılık bilgisi birbiriyle sınanır.</p></div>
+          <div class="mod-item"><h4 class="h3">Mevzuat denetimi</h4><p>Uyumlaştırılmış sınıflandırması bulunan bir bileşende tedarikçi beyanı mevzuattakinden farklıysa uyarı üretilir.</p></div>
+          <div class="mod-item"><h4 class="h3">Güncellik takibi</h4><p>Revizyon tarihi geçmiş veya mevzuat değişikliğinden sonra güncellenmemiş formlar işaretlenir. Güncel sürüm talebi için yazışma metni hazırlanır.</p></div>
+          <div class="mod-item"><h4 class="h3">Sürüm karşılaştırması</h4><p>Aynı ürünün yeni sürümü yüklendiğinde önceki sürümle farklar bölüm bazında raporlanır.</p></div>
+          <div class="mod-item"><h4 class="h3">Özet kartı</h4><p>Her ürün için tek sayfalık özet: zararlılık profili, işaretler, depolama koşulları, birlikte depolanmaması gereken malzemeler, KKD ve taşımacılık bilgisi.</p></div>
+          <div class="mod-item"><h4 class="h3">Depolama sınıflaması</h4><p>Zararlılık sınıflarına göre depolama grupları belirlenir, uyumsuz malzeme çiftleri tespit edilir ve ayrıştırma gerekleri raporlanır.</p></div>
+          <div class="mod-item"><h4 class="h3">Envanter görünümü</h4><p>Tesis veya depo bazında kimyasal envanter. Kanserojen, mutajen veya üreme sistemine toksik maddeler ile kısıtlamaya tabi maddeleri içeren ürünler ayrıca listelenir.</p></div>
+          <div class="mod-item"><h4 class="h3">İş sağlığı ve güvenliği çıktıları</h4><p>Kimyasal risk değerlendirmesine girdi olacak derlenmiş veri setleri; çalışma talimatı ve koruyucu donanım matrisi taslakları.</p></div>
+        </div>
+      </div>
+
+      <div class="sub">
+        <div class="sub-head"><h3 class="h3">Beklenen faydalar</h3></div>
+        <div class="benefits">
+          <div class="benefit"><span class="benefit-k">Uyum</span><p>Eksiklik ve tutarsızlıklar satın alma aşamasında tespit edilir. Denetimde eksik veya güncel olmayan belge riski azalır.</p></div>
+          <div class="benefit"><span class="benefit-k">Verimlilik</span><p>Yüzlerce formun elle okunması ve tablolara aktarılması ortadan kalkar.</p></div>
+          <div class="benefit"><span class="benefit-k">Güvenlik</span><p>Depolama uyumsuzlukları ve koruyucu donanım gereksinimleri tek bir görünümde toplanır.</p></div>
+          <div class="benefit"><span class="benefit-k">Veri bütünlüğü</span><p>Doğrulanmış tedarikçi verileri, kendi karışımlarınızın sınıflandırmasında kaynak olarak kullanılabilir.</p></div>
+        </div>
+      </div>
+
+      <div class="sub">
+        <div class="sub-head"><h3 class="h3">Uygulama esasları</h3></div>
+        <div class="principles">
+          <div class="principle"><h4 class="h3">Onaylanmamış veri kullanılmaz</h4><p>Veri çıkarımı otomatik yapılır, ancak çıkarılan verilerin tamamı kullanıcı onayına sunulur. Onaylanmamış hiçbir veri sınıflandırmada veya belge üretiminde kullanılmaz.</p></div>
+          <div class="principle"><h4 class="h3">Sınırlı bileşimde temkinli rapor</h4><p>Bileşim aralık olarak verilmişse veya ticari gizlilik nedeniyle sınırlı bildirilmişse sonuç “değerlendirilemedi” olarak raporlanır; tutarsızlık beyanı üretilmez.</p></div>
+          <div class="principle"><h4 class="h3">Bulgular bilgilendirme amaçlıdır</h4><p>Tedarikçi GBF’sinin içeriğine ilişkin sorumluluk, ilgili mevzuat uyarınca formu hazırlayan ve ürünü arz eden taraftadır.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kurumsal -->
+  <section class="section band" id="kurumsal">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Kurumsal nitelikler</span>
+        <h2 class="h2">Denetime hazır, ticari sırrınızı koruyan altyapı</h2>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c.6-3.2 3-5 6-5s5.4 1.8 6 5"/><circle cx="17" cy="9" r="2.6"/><path d="M16 14.2c2.6.2 4.4 1.8 5 4.8"/></svg></span>
+          <h3 class="h3">Kullanıcı rolleri</h3>
+          <p>Ürün sorumlusu, regülasyon uzmanı/KDU, görüntüleyici ve denetçi rolleri. Onay yetkisi role bağlıdır.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="1.5"/><path d="M9 3.5v2h6v-2M8.5 10h7M8.5 13.5h7M8.5 17h4"/></svg></span>
+          <h3 class="h3">Denetim izi</h3>
+          <p>Sınıflandırma, uzman müdahalesi ve onay işlemleri; kullanıcı, zaman ve gerekçe bilgisiyle değiştirilemez biçimde kaydedilir.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.6L4 15.5M4 20v-4.5h4.5"/></svg></span>
+          <h3 class="h3">Yeniden üretilebilirlik</h3>
+          <p>Yayımlanan her belge, girdileri ve referans veri sürümüyle birlikte arşivlenir; sonradan birebir yeniden üretilebilir.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="1.5"/><path d="M8 10.5v-3a4 4 0 0 1 8 0v3M12 14.5V17"/></svg></span>
+          <h3 class="h3">Veri gizliliği</h3>
+          <p>Formülasyon bilgileri ticari sır olarak ele alınır. Firma bazında veri yalıtımı; aktarımda ve depoda şifreleme.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="4.5" rx="1"/><path d="M5 8.5V19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.5M10 12.5h4"/></svg></span>
+          <h3 class="h3">Saklama</h3>
+          <p>Mevzuatın öngördüğü saklama süresine uygun arşivleme ve düzenli yedekleme.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.6 5.2 3.6 8.5s-1.2 6.1-3.6 8.5c-2.4-2.4-3.6-5.2-3.6-8.5S9.6 5.9 12 3.5z"/></svg></span>
+          <h3 class="h3">Erişim</h3>
+          <p>Kurulum gerektirmeyen web tabanlı erişim. Talep hâlinde Türkiye veya Avrupa Birliği bölgesinde barındırma.</p>
+        </div>
+      </div>
+      <div class="disclaimer">
+        <span class="mono-label">Sorumluluk beyanı</span>
+        <p>msdsform, sınıflandırma ve belge hazırlama süreçlerini desteklemek üzere tasarlanmış bir uzman aracıdır. Hazırlanan Güvenlik Bilgi Formunun mevzuata uygunluğuna ilişkin sorumluluk, ilgili mevzuat uyarınca piyasaya arz eden tarafta ve formu onaylayan Kimyasal Değerlendirme Uzmanındadır.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- İletişim -->
+  <section class="section" id="iletisim">
+    <div class="wrap contact">
+      <div class="contact-copy">
+        <span class="eyebrow">İletişim</span>
+        <h2 class="h2">Demo talep edin</h2>
+        <p class="lead">Ürün tanıtımı ve kurumsal demo talepleriniz için bize ulaşabilirsiniz.</p>
+        <!-- İletişim bilgileri: e-posta adresini CONTACT_EMAIL sabitinde ve aşağıda güncelleyin; telefon satırını ekleyin. -->
+        <dl class="contact-info">
+          <div class="contact-row">
+            <dt class="mono-label">E-posta</dt>
+            <dd><a id="contact-email" href="mailto:info@msdsform.com">info@msdsform.com</a></dd>
+            <button class="btn btn-ghost btn-sm" type="button" id="copy-email">Kopyala</button>
+          </div>
+          <!--
+          <div class="contact-row">
+            <dt class="mono-label">Telefon</dt>
+            <dd><a href="tel:+900000000000">+90 000 000 00 00</a></dd>
+            <span></span>
+          </div>
+          -->
+          <div class="contact-row">
+            <dt class="mono-label">İnternet</dt>
+            <dd>msdsform.com</dd>
+            <span></span>
+          </div>
+        </dl>
+      </div>
+
+      <form class="form" id="demo-form" novalidate>
+        <div class="form-row">
+          <div class="field"><label for="f-ad">Ad Soyad</label><input id="f-ad" name="ad" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="f-firma">Firma</label><input id="f-firma" name="firma" type="text" autocomplete="organization" required></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="f-eposta">E-posta</label><input id="f-eposta" name="eposta" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="f-tel">Telefon <span class="opt">(isteğe bağlı)</span></label><input id="f-tel" name="telefon" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field">
+          <label for="f-konu">İlgilendiğiniz konu</label>
+          <select id="f-konu" name="konu">
+            <option>GBF hazırlama sistemi</option>
+            <option>Tedarikçi GBF analiz ve doğrulama modülü</option>
+            <option>Her ikisi</option>
+            <option>Diğer</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-mesaj">Mesajınız <span class="opt">(isteğe bağlı)</span></label>
+          <textarea id="f-mesaj" name="mesaj" placeholder="Örneğin yıllık hazırlanan GBF sayısı, kullanıcı sayısı veya barındırma tercihi"></textarea>
+        </div>
+        <div class="form-end">
+          <p class="form-note">Gönder düğmesi, bilgilerinizi içeren bir e-postayı e-posta uygulamanızda açar.</p>
+          <button class="btn btn-primary" type="submit">Talebi gönder</button>
+        </div>
+        <p class="form-status" id="form-status" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <a class="brand" href="#top">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect class="frame" x="7" y="7" width="18" height="18" rx="1.5" transform="rotate(45 16 16)" stroke-width="2.6"/><path class="tick" d="M11.2 16.4l3.3 3.3 6.4-7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>msdsform<span class="tld">.com</span></span>
+        </a>
+        <p>KKDİK Ek-2 ve SEA kriterlerine göre karışım sınıflandırması ve Güvenlik Bilgi Formu hazırlama sistemi.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Alt menü">
+        <a href="#sistem">Sistem</a>
+        <a href="#yetenekler">Yetenekler</a>
+        <a href="#mevzuat">Mevzuat</a>
+        <a href="#belge">Belge ve onay</a>
+        <a href="#tedarikci">Tedarikçi modülü</a>
+        <a href="#kurumsal">Kurumsal</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+    </div>
+    <div class="footer-meta">
+      <span>© <span id="yil">2026</span> msdsform.com</span>
+      <span>Hazırlanan formun mevzuata uygunluğu, piyasaya arz edene ve onaylayan KDU’ya aittir.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var CONTACT_EMAIL = 'info@msdsform.com';
+
+  function pct(n) {
+    return '%' + n.toLocaleString('tr-TR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  }
+  function round1(n) { return Math.round(n * 10) / 10; }
+
+  // Mobil menü
+  var toggle = document.getElementById('menu-toggle');
+  var nav = document.getElementById('site-nav');
+  function setMenu(open) {
+    nav.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
+  }
+  toggle.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  // Gerekçe kaydı: toplama yöntemi örneği (Skin Irrit. 2 bileşenlerin toplamı ≥ %10)
+  var B = 4.5, C = 0.8, CUTOFF = 1, LIMIT = 10, SCALE = 20;
+  var slider = document.getElementById('conc-a');
+  var record = document.getElementById('record');
+  var el = {
+    a: document.getElementById('a-val'),
+    a2: document.getElementById('a-val-2'),
+    tag: document.getElementById('a-tag'),
+    water: document.getElementById('w-val'),
+    sum: document.getElementById('sum-val'),
+    cmp: document.getElementById('sum-cmp'),
+    fill: document.getElementById('meter-fill'),
+    title: document.getElementById('res-title'),
+    sub: document.getElementById('res-sub')
+  };
+  function renderRecord() {
+    var a = round1(parseFloat(slider.value));
+    var aIn = a >= CUTOFF;
+    var sum = round1((aIn ? a : 0) + B);
+    var hit = sum >= LIMIT;
+    el.a.textContent = pct(a);
+    el.a2.textContent = pct(a);
+    el.tag.textContent = aIn ? 'dahil' : '%1 altında';
+    el.tag.className = 'tag ' + (aIn ? 'in' : 'out');
+    el.water.textContent = pct(round1(100 - a - B - C));
+    el.sum.textContent = pct(sum);
+    el.cmp.textContent = hit ? '≥ %10' : '< %10';
+    el.fill.style.width = Math.min(sum / SCALE * 100, 100) + '%';
+    record.setAttribute('data-state', hit ? 'hit' : 'miss');
+    el.title.textContent = hit ? 'Cilt tahrişi, Kategori 2' : 'Bu zararlılık sınıfında sınıflandırılmaz';
+    el.sub.innerHTML = hit
+      ? '<code>H315</code> Cilt tahrişine yol açar. · Uyarı kelimesi: <b>Dikkat</b>'
+      : 'Toplam ' + pct(sum) + ', %10 eşiğinin altında. Bu sınıf için etiket unsuru oluşmaz.';
+    slider.setAttribute('aria-valuetext', pct(a));
+  }
+  slider.addEventListener('input', renderRecord);
+  renderRecord();
+
+  // Belge yaşam döngüsü
+  var STAGES = {
+    taslak:   { chip: 'Taslak', tone: 'na', stamp: null },
+    inceleme: { chip: 'İncelemede', tone: 'warn', stamp: null },
+    onay:     { chip: 'Onaylandı', tone: 'ok', stamp: ['Onaylandı', 'KDU · 14.10.2026'] },
+    yayim:    { chip: 'Yayımda', tone: 'ok', stamp: ['Yayımda', 'Sürüm 2.0'] },
+    kaldirma: { chip: 'Yürürlükten kaldırıldı', tone: 'na', stamp: ['Yürürlükten kaldırıldı', 'Yerine sürüm 3.0'] }
+  };
+  var doc = document.getElementById('doc');
+  var chip = document.getElementById('doc-chip');
+  var stamp = document.getElementById('doc-stamp');
+  var stampMain = document.getElementById('stamp-main');
+  var stampSub = document.getElementById('stamp-sub');
+  var stageButtons = document.querySelectorAll('#stages button');
+  function setStage(key) {
+    var s = STAGES[key];
+    doc.setAttribute('data-stage', key);
+    chip.textContent = s.chip;
+    chip.className = 'chip ' + s.tone;
+    stageButtons.forEach(function (b) {
+      var on = b.getAttribute('data-stage') === key;
+      b.setAttribute('aria-pressed', String(on));
+      b.parentElement.classList.toggle('active', on);
+    });
+    if (s.stamp) {
+      stampMain.textContent = s.stamp[0];
+      stampSub.textContent = s.stamp[1];
+      stamp.hidden = false;
+      stamp.classList.remove('in');
+      void stamp.offsetWidth;
+      stamp.classList.add('in');
+    } else {
+      stamp.hidden = true;
+    }
+  }
+  stageButtons.forEach(function (b) {
+    b.addEventListener('click', function () { setStage(b.getAttribute('data-stage')); });
+  });
+
+  // E-posta kopyalama
+  var copyBtn = document.getElementById('copy-email');
+  var emailLink = document.getElementById('contact-email');
+  copyBtn.addEventListener('click', function () {
+    function done(label) {
+      copyBtn.textContent = label;
+      setTimeout(function () { copyBtn.textContent = 'Kopyala'; }, 1800);
+    }
+    function selectText() {
+      var range = document.createRange();
+      range.selectNodeContents(emailLink);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      done('Seçildi');
+    }
+    try {
+      navigator.clipboard.writeText(CONTACT_EMAIL).then(function () { done('Kopyalandı'); }, selectText);
+    } catch (err) { selectText(); }
+  });
+
+  // Demo formu: statik sitede e-posta taslağı oluşturur
+  var form = document.getElementById('demo-form');
+  var status = document.getElementById('form-status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    var d = new FormData(form);
+    var subject = 'Demo talebi: ' + d.get('firma');
+    var body = [
+      'Ad Soyad: ' + d.get('ad'),
+      'Firma: ' + d.get('firma'),
+      'E-posta: ' + d.get('eposta'),
+      'Telefon: ' + (d.get('telefon') || '-'),
+      'Konu: ' + d.get('konu'),
+      '',
+      d.get('mesaj') || ''
+    ].join('\n');
+    status.textContent = 'E-posta uygulamanız açılıyor. Açılmazsa talebinizi ' + CONTACT_EMAIL + ' adresine doğrudan gönderebilirsiniz.';
+    window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+
+  document.getElementById('yil').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
