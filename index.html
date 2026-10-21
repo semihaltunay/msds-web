@@ -6,36 +6,40 @@
 <title>msdsform.com</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="KKDİK Ek-2 ve SEA kriterlerine göre karışım sınıflandırması ve 16 bölümlü Türkçe Güvenlik Bilgi Formu hazırlama sistemi. Her sınıflandırma sonucu, dayandığı kural ve veriyle birlikte kaydedilir.">
+<meta name="author" content="Guska Bilgisayar Yazılım A.Ş.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://msdsform.com/">
 <meta property="og:title" content="msdsform.com · Güvenlik Bilgi Formu Hazırlama Sistemi">
 <meta property="og:description" content="Reçeteden KDU onayına ve yayıma kadar GBF sürecini tek platformda yürütün. Her sonuç gerekçesiyle saklanır.">
-<meta name="theme-color" content="#F3F5F8" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0D1118" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='7' y='7' width='18' height='18' rx='1.5' transform='rotate(45 16 16)' fill='white' stroke='%23D6131B' stroke-width='2.6'/%3E%3Cpath d='M11.2 16.4l3.3 3.3 6.4-7' fill='none' stroke='%231F3FA6' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#F3F6F9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#08101E" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
-/* Yerleşim: belge kâğıdı zemininde tek akış. Hero'da canlı bir gerekçe kaydı; GHS kırmızısı yalnızca piktogram ve filigranda, mürekkep mavisi onay damgası ve eylemlerde. */
+/* Yerleşim: belge kâğıdı zemininde tek akış. Hero'da canlı bir gerekçe kaydı. Renkler logodan: lacivert eylemlerde ve onay damgasında, turkuaz vurgularda; GHS kırmızısı yalnızca piktogram ve filigranda. */
 :root{
-  --paper:#F3F5F8;
+  --paper:#F3F6F9;
   --sheet:#FFFFFF;
-  --band:#E8ECF2;
-  --ink:#121821;
-  --ink-2:#4D5868;
-  --ink-3:#6F7989;
-  --rule:#D3D9E2;
-  --rule-soft:#E4E8EE;
-  --stamp:#1F3FA6;
-  --stamp-hover:#18338A;
-  --stamp-soft:#E6EBFA;
-  --on-stamp:#FFFFFF;
+  --band:#E7EEF4;
+  --ink:#0D1830;
+  --ink-2:#4A5770;
+  --ink-3:#6B788E;
+  --rule:#D1DAE5;
+  --rule-soft:#E2E9F0;
+  --navy:#001D5A;          /* logo laciverti */
+  --primary:#001D5A;
+  --primary-hover:#0A2E7A;
+  --on-primary:#FFFFFF;
+  --teal:#007A87;          /* metin için koyulaştırılmış logo turkuazı */
+  --teal-display:#0096A6;  /* büyük başlıklar için */
+  --teal-soft:#DFF3F5;
   --ghs:#D6131B;
-  --core-bg:#121821;
-  --core-fg:#F3F5F8;
-  --core-muted:#A9B3C2;
-  --core-accent:#93A8FF;
+  --core-bg:#001D5A;
+  --core-fg:#F2F6FB;
+  --core-muted:#A7B7D6;
   --ok:#1C7448;  --ok-soft:#E1F2E8;
   --warn:#8F5600; --warn-soft:#FAEFD9;
   --bad:#B3241C; --bad-soft:#FBE5E2;
@@ -43,7 +47,9 @@
   --picto-bg:#FFFFFF;
   --picto-ink:#111111;
   --picto-red:#E3000F;
-  --shadow:rgba(18,24,33,.20);
+  --shadow:rgba(13,24,48,.20);
+  --logo-light:block;
+  --logo-dark:none;
 
   --f-display:"Archivo","Arial Narrow",Arial,system-ui,sans-serif;
   --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
@@ -52,32 +58,38 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --paper:#0D1118; --sheet:#151B25; --band:#111720;
-    --ink:#E7EBF1; --ink-2:#A3ADBC; --ink-3:#7F899A;
-    --rule:#2A3341; --rule-soft:#1E2631;
-    --stamp:#93A8FF; --stamp-hover:#B3C2FF; --stamp-soft:#1B2547; --on-stamp:#0D1118;
+    --paper:#08101E; --sheet:#0F1A2C; --band:#0B1525;
+    --ink:#E6ECF5; --ink-2:#A1AEC2; --ink-3:#7D8AA0;
+    --rule:#22314A; --rule-soft:#182438;
+    --navy:#A9BEF5; --primary:#00B6C6; --primary-hover:#3FD0DD; --on-primary:#001D5A;
+    --teal:#3CCEDC; --teal-display:#3CCEDC; --teal-soft:#0A2E36;
     --ghs:#FF5047;
-    --core-bg:#1D2533; --core-fg:#E7EBF1; --core-muted:#9AA5B6; --core-accent:#93A8FF;
+    --core-bg:#0B2558; --core-fg:#E6ECF5; --core-muted:#9DB0D3;
     --ok:#62CF94; --ok-soft:#11301F;
     --warn:#F0B54E; --warn-soft:#38290C;
     --bad:#FF7B70; --bad-soft:#3A1614;
-    --na:#A6B0BE; --na-soft:#1F2630;
+    --na:#A6B0BE; --na-soft:#1A2434;
     --shadow:rgba(0,0,0,.55);
+    --logo-light:none;
+    --logo-dark:block;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#0D1118; --sheet:#151B25; --band:#111720;
-  --ink:#E7EBF1; --ink-2:#A3ADBC; --ink-3:#7F899A;
-  --rule:#2A3341; --rule-soft:#1E2631;
-  --stamp:#93A8FF; --stamp-hover:#B3C2FF; --stamp-soft:#1B2547; --on-stamp:#0D1118;
+  --paper:#08101E; --sheet:#0F1A2C; --band:#0B1525;
+  --ink:#E6ECF5; --ink-2:#A1AEC2; --ink-3:#7D8AA0;
+  --rule:#22314A; --rule-soft:#182438;
+  --navy:#A9BEF5; --primary:#00B6C6; --primary-hover:#3FD0DD; --on-primary:#001D5A;
+  --teal:#3CCEDC; --teal-display:#3CCEDC; --teal-soft:#0A2E36;
   --ghs:#FF5047;
-  --core-bg:#1D2533; --core-fg:#E7EBF1; --core-muted:#9AA5B6; --core-accent:#93A8FF;
+  --core-bg:#0B2558; --core-fg:#E6ECF5; --core-muted:#9DB0D3;
   --ok:#62CF94; --ok-soft:#11301F;
   --warn:#F0B54E; --warn-soft:#38290C;
   --bad:#FF7B70; --bad-soft:#3A1614;
-  --na:#A6B0BE; --na-soft:#1F2630;
+  --na:#A6B0BE; --na-soft:#1A2434;
   --shadow:rgba(0,0,0,.55);
+  --logo-light:none;
+  --logo-dark:block;
   color-scheme:dark;
 }
 
@@ -87,12 +99,12 @@ html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-t
 body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
 img,svg{max-width:100%}
-a{color:var(--stamp)}
+a{color:var(--teal)}
 h1,h2,h3,h4,p,figure{margin:0}
 h1,h2,h3,h4{text-wrap:balance}
 [hidden]{display:none!important}
 p{text-wrap:pretty}
-:focus-visible{outline:2px solid var(--stamp);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -104,9 +116,9 @@ p{text-wrap:pretty}
 }
 
 /* Tipografi */
-.eyebrow{font:500 12.5px/1.3 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--stamp)}
+.eyebrow{font:500 12.5px/1.3 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--teal)}
 .h1{font-family:var(--f-display);font-stretch:114%;font-weight:770;font-size:clamp(38px,5.6vw,68px);line-height:1.02;letter-spacing:-.03em}
-.h1 em{font-style:normal;color:var(--stamp)}
+.h1 em{font-style:normal;color:var(--teal-display)}
 .h2{font-family:var(--f-display);font-stretch:110%;font-weight:720;font-size:clamp(30px,3.7vw,46px);line-height:1.08;letter-spacing:-.022em}
 .h3{font-family:var(--f-display);font-stretch:106%;font-weight:660;font-size:19px;line-height:1.28;letter-spacing:-.005em}
 .lead{font-size:18px;line-height:1.62;color:var(--ink-2);max-width:65ch}
@@ -115,8 +127,8 @@ p{text-wrap:pretty}
 
 /* Düğmeler */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:8px;border:1px solid transparent;font:600 15px/1 var(--f-body);text-decoration:none;cursor:pointer;transition:background-color .15s,border-color .15s,color .15s}
-.btn-primary{background:var(--stamp);color:var(--on-stamp)}
-.btn-primary:hover{background:var(--stamp-hover)}
+.btn-primary{background:var(--primary);color:var(--on-primary)}
+.btn-primary:hover{background:var(--primary-hover)}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
 .btn-ghost:hover{border-color:var(--ink-3)}
 .btn-sm{min-height:34px;padding:0 12px;font-size:13px;font-weight:500}
@@ -124,11 +136,11 @@ p{text-wrap:pretty}
 /* Üst bilgi */
 .site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--paper);background:color-mix(in srgb,var(--paper) 90%,transparent);-webkit-backdrop-filter:saturate(1.3) blur(10px);backdrop-filter:saturate(1.3) blur(10px);border-bottom:1px solid var(--rule)}
 .header-row{display:flex;align-items:center;justify-content:space-between;gap:20px;height:66px}
-.brand{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-family:var(--f-display);font-stretch:118%;font-weight:760;font-size:19px;letter-spacing:-.01em;flex:none}
-.brand .tld{color:var(--ink-3);font-weight:500}
-.mark{width:30px;height:30px;flex:none}
-.mark .frame{fill:var(--sheet);stroke:var(--ghs)}
-.mark .tick{fill:none;stroke:var(--stamp)}
+.brand{display:inline-flex;align-items:center;flex:none;text-decoration:none;border-radius:6px}
+.logo-light{display:var(--logo-light)}
+.logo-dark{display:var(--logo-dark)}
+.brand img{height:46px;width:auto}
+@media (max-width:520px){.site-header .brand img{height:38px}}
 .nav{display:flex;align-items:center;gap:2px}
 .nav a{color:var(--ink-2);text-decoration:none;font-size:14.5px;font-weight:500;padding:8px 11px;border-radius:6px;white-space:nowrap}
 .nav a:hover{color:var(--ink);background:var(--rule-soft)}
@@ -158,7 +170,7 @@ p{text-wrap:pretty}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
 .hero-meta{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;color:var(--ink-2)}
 .hero-meta li{display:inline-flex;align-items:center;gap:9px}
-.hero-meta li::before{content:"";width:7px;height:7px;flex:none;transform:rotate(45deg);border:1.5px solid var(--ghs)}
+.hero-meta li::before{content:"";width:7px;height:7px;flex:none;transform:rotate(45deg);border:1.5px solid var(--teal)}
 @media (max-width:980px){.hero-grid{grid-template-columns:minmax(0,1fr)}}
 
 /* Gerekçe kaydı (hero kartı) */
@@ -186,17 +198,17 @@ p{text-wrap:pretty}
   .comp th:nth-child(2),.comp td:nth-child(2){display:none}
   .comp .cls-m{display:block}
 }
-.comp tr.live td{background:var(--stamp-soft)}
-.comp tr.live td:first-child{box-shadow:-6px 0 0 var(--stamp-soft)}
-.comp tr.live td:last-child{box-shadow:6px 0 0 var(--stamp-soft)}
+.comp tr.live td{background:var(--teal-soft)}
+.comp tr.live td:first-child{box-shadow:-6px 0 0 var(--teal-soft)}
+.comp tr.live td:last-child{box-shadow:6px 0 0 var(--teal-soft)}
 .tag{display:inline-block;font:500 11px/1 var(--f-mono);padding:4px 7px;border-radius:4px;white-space:nowrap}
-.tag.in{background:var(--stamp-soft);color:var(--stamp)}
+.tag.in{background:var(--teal-soft);color:var(--teal)}
 .comp tr.live .tag.in{background:var(--sheet)}
 .tag.out{background:var(--na-soft);color:var(--na)}
 .slider{display:grid;gap:6px}
 .slider label{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;color:var(--ink-2)}
 .slider label b{font:600 13.5px var(--f-mono);color:var(--ink)}
-.slider input{width:100%;margin:0;height:26px;accent-color:var(--stamp);cursor:pointer}
+.slider input{width:100%;margin:0;height:26px;accent-color:var(--teal);cursor:pointer}
 .sum{display:grid;gap:8px}
 .sum-line{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px;color:var(--ink-2)}
 .sum-line strong{font:600 19px/1 var(--f-mono);color:var(--ink)}
@@ -239,7 +251,7 @@ p{text-wrap:pretty}
 /* Süreç adımları */
 .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 36px}
 .step{display:grid;gap:10px;align-content:start;padding-top:18px;border-top:2px solid var(--ink)}
-.step-n{font:500 12px/1 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--stamp)}
+.step-n{font:500 12px/1 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--teal)}
 @media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.steps{grid-template-columns:minmax(0,1fr);gap:30px}}
 
@@ -249,14 +261,14 @@ p{text-wrap:pretty}
 @media (max-width:900px){.split{grid-template-columns:minmax(0,1fr)}}
 .refs{margin:0;display:grid;border-top:1px solid var(--rule)}
 .ref-row{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:6px 24px;padding-block:17px;border-bottom:1px solid var(--rule)}
-.ref-row dt{font:600 14.5px/1.45 var(--f-mono);color:var(--stamp)}
+.ref-row dt{font:600 14.5px/1.45 var(--f-mono);color:var(--navy)}
 .ref-row dd{margin:0;font-size:15.5px;color:var(--ink-2)}
 .ref-row dd b{display:block;color:var(--ink);font-weight:600}
 @media (max-width:560px){.ref-row{grid-template-columns:minmax(0,1fr)}}
 .callout{display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;align-items:start;padding:20px;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius)}
 .seal{width:52px;height:52px}
-.seal circle{fill:none;stroke:var(--stamp)}
-.seal text{fill:var(--stamp);font:600 13px var(--f-mono);letter-spacing:.06em}
+.seal circle{fill:none;stroke:var(--navy)}
+.seal text{fill:var(--navy);font:600 13px var(--f-mono);letter-spacing:.06em}
 .callout p{font-size:15px;color:var(--ink-2)}
 .callout b{color:var(--ink)}
 
@@ -264,7 +276,7 @@ p{text-wrap:pretty}
 .legend{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:14px;color:var(--ink-2)}
 .legend span{display:inline-flex;align-items:center;gap:9px}
 .glyph{width:9px;height:9px;flex:none;display:inline-block}
-.glyph.have{background:var(--stamp);transform:rotate(45deg)}
+.glyph.have{background:var(--teal);transform:rotate(45deg)}
 .glyph.plan{border:1.6px solid var(--ink-3);border-radius:50%;width:10px;height:10px}
 .cap-group{display:grid;gap:18px}
 .cap-group-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
@@ -288,9 +300,9 @@ p{text-wrap:pretty}
 .stage button{display:grid;grid-template-columns:26px minmax(0,1fr);gap:2px 12px;width:100%;padding:13px 16px 13px 18px;margin:0;border:0;border-radius:0 8px 8px 0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;transition:background-color .15s}
 .stage button:hover{background:var(--rule-soft)}
 .stage.active button{background:var(--sheet)}
-.stage.active::before{content:"";position:absolute;left:-2px;top:0;bottom:0;width:2px;background:var(--stamp)}
+.stage.active::before{content:"";position:absolute;left:-2px;top:0;bottom:0;width:2px;background:var(--teal)}
 .stage-n{font:500 12px/1.6 var(--f-mono);color:var(--ink-3)}
-.stage.active .stage-n{color:var(--stamp)}
+.stage.active .stage-n{color:var(--teal)}
 .stage-name{font-weight:600;font-size:16px}
 .stage-desc{grid-column:2;font-size:14.5px;color:var(--ink-2)}
 .stage:not(.active) .stage-desc{display:none}
@@ -310,15 +322,15 @@ p{text-wrap:pretty}
 .doc-sections{list-style:none;margin:0;padding:8px 0 0;display:grid;font-size:13px;transition:opacity .25s}
 .doc-sections li{position:relative;display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:8px;align-items:center;padding:5px 0;border-bottom:1px dotted var(--rule)}
 .doc-sections .n{font:500 11.5px var(--f-mono);color:var(--ink-3)}
-.doc-sections li.chg::before{content:"";position:absolute;left:-18px;top:5px;bottom:5px;width:3px;border-radius:2px;background:var(--stamp)}
-.doc-sections .chg-tag{font:500 10px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--stamp)}
+.doc-sections li.chg::before{content:"";position:absolute;left:-18px;top:5px;bottom:5px;width:3px;border-radius:2px;background:var(--teal)}
+.doc-sections .chg-tag{font:500 10px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
 .doc-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 12px;padding-top:12px;font:400 11px/1.4 var(--f-mono);color:var(--ink-3)}
 .doc-foot .key{display:inline-flex;align-items:center;gap:6px}
-.doc-foot .key::before{content:"";width:3px;height:12px;border-radius:2px;background:var(--stamp)}
+.doc-foot .key::before{content:"";width:3px;height:12px;border-radius:2px;background:var(--teal)}
 .watermark{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;transition:opacity .3s}
 .watermark span{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:clamp(60px,10vw,104px);letter-spacing:.06em;color:var(--ghs);opacity:.13;transform:rotate(-30deg)}
 .doc[data-stage="onay"] .watermark,.doc[data-stage="yayim"] .watermark,.doc[data-stage="kaldirma"] .watermark{opacity:0}
-.stamp{position:absolute;right:28px;bottom:64px;display:grid;gap:3px;justify-items:center;padding:10px 16px;border:2.5px solid currentColor;border-radius:6px;color:var(--stamp);background:var(--sheet);background:color-mix(in srgb,var(--sheet) 82%,transparent);font:600 14px/1.15 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;transform:rotate(-8deg);pointer-events:none}
+.stamp{position:absolute;right:28px;bottom:64px;display:grid;gap:3px;justify-items:center;padding:10px 16px;border:2.5px solid currentColor;border-radius:6px;color:var(--navy);background:var(--sheet);background:color-mix(in srgb,var(--sheet) 82%,transparent);font:600 14px/1.15 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;transform:rotate(-8deg);pointer-events:none}
 .stamp small{font:500 10.5px/1.2 var(--f-mono);letter-spacing:.03em;text-transform:none}
 .stamp.in{animation:stamp-in .32s cubic-bezier(.2,.9,.3,1.2)}
 @keyframes stamp-in{from{opacity:0;transform:rotate(-8deg) scale(1.35)}to{opacity:1;transform:rotate(-8deg) scale(1)}}
@@ -337,9 +349,7 @@ p{text-wrap:pretty}
 .engine-side{display:grid;gap:8px;align-content:start;padding:22px;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius)}
 .engine-side p{font-size:15px;color:var(--ink-2)}
 .engine-core{display:grid;gap:10px;justify-items:center;align-content:center;text-align:center;padding:26px 22px;border-radius:var(--radius);background:var(--core-bg);color:var(--core-fg)}
-.engine-core .mark{width:44px;height:44px}
-.engine-core .mark .frame{fill:none;stroke:var(--ghs)}
-.engine-core .mark .tick{stroke:var(--core-accent)}
+.engine-core img{width:72px;height:72px}
 .engine-core strong{font-family:var(--f-display);font-stretch:110%;font-weight:700;font-size:19px;line-height:1.25}
 .engine-core span{font-size:14px;color:var(--core-muted)}
 .engine-arrow{display:grid;place-items:center;color:var(--ink-3)}
@@ -387,7 +397,7 @@ p{text-wrap:pretty}
 /* Kurumsal */
 .features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 40px}
 .feature{display:grid;grid-template-columns:42px minmax(0,1fr);gap:4px 16px;align-content:start}
-.feature-icon{grid-row:span 2;width:42px;height:42px;display:grid;place-items:center;border-radius:9px;background:var(--stamp-soft);color:var(--stamp)}
+.feature-icon{grid-row:span 2;width:42px;height:42px;display:grid;place-items:center;border-radius:9px;background:var(--teal-soft);color:var(--teal)}
 .feature-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .feature p{font-size:15px;color:var(--ink-2)}
 @media (max-width:900px){.features{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -413,7 +423,7 @@ p{text-wrap:pretty}
 .field .opt{color:var(--ink-3);font-weight:400}
 .field input,.field select,.field textarea{width:100%;min-width:0;font:400 15px/1.4 var(--f-body);color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:7px;padding:11px 12px}
 .field textarea{min-height:116px;resize:vertical}
-.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--stamp);outline-offset:-1px;border-color:transparent}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--teal);outline-offset:-1px;border-color:transparent}
 .form-end{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px}
 .form-note{font-size:13px;color:var(--ink-3);max-width:44ch}
 .form-status{font-size:14px;color:var(--ok);min-height:1em}
@@ -427,16 +437,22 @@ p{text-wrap:pretty}
 .footer-nav{display:grid;grid-template-columns:repeat(2,minmax(0,auto));gap:10px 36px}
 .footer-nav a{color:var(--ink-2);text-decoration:none;font-size:14px}
 .footer-nav a:hover{color:var(--ink)}
-.footer-meta{margin-top:36px;padding-top:20px;border-top:1px solid var(--rule-soft);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:13px;color:var(--ink-3)}
+.maker{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:14px 28px;align-items:center;margin-top:36px;padding-top:28px;border-top:1px solid var(--rule-soft)}
+.maker-body{display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px;min-width:0}
+.maker-logo{height:44px;width:auto}
+.maker address{font-style:normal;font-size:14px;line-height:1.55;color:var(--ink-2);min-width:0}
+.maker address strong{display:block;color:var(--ink);font-weight:600}
+@media (max-width:640px){.maker{grid-template-columns:minmax(0,1fr)}}
+.footer-meta{margin-top:28px;padding-top:20px;border-top:1px solid var(--rule-soft);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:13px;color:var(--ink-3)}
 </style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap header-row">
-    <a class="brand" href="#top" aria-label="msdsform.com ana sayfa">
-      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect class="frame" x="7" y="7" width="18" height="18" rx="1.5" transform="rotate(45 16 16)" stroke-width="2.6"/><path class="tick" d="M11.2 16.4l3.3 3.3 6.4-7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>msdsform<span class="tld">.com</span></span>
+    <a class="brand" href="#top" aria-label="msdsform ana sayfa">
+      <img class="logo-light" src="assets/logo.webp" width="640" height="176" alt="msdsform">
+      <img class="logo-dark" src="assets/logo-dark.webp" width="640" height="176" alt="msdsform">
     </a>
     <nav class="nav" id="site-nav" aria-label="Ana menü">
       <a href="#sistem">Sistem</a>
@@ -778,7 +794,7 @@ p{text-wrap:pretty}
         </div>
         <div class="engine-arrow" aria-hidden="true"><svg viewBox="0 0 36 16"><path d="M2 8h30M25 2l7 6-7 6"/></svg></div>
         <div class="engine-core">
-          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect class="frame" x="7" y="7" width="18" height="18" rx="1.5" transform="rotate(45 16 16)" stroke-width="2.2"/><path class="tick" d="M11.2 16.4l3.3 3.3 6.4-7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <img src="assets/logo-icon.webp" width="192" height="192" alt="" loading="lazy">
           <strong>Ortak sınıflandırma motoru</strong>
           <span>Aynı kural seti iki yönde çalışır</span>
         </div>
@@ -974,9 +990,9 @@ p{text-wrap:pretty}
   <div class="wrap">
     <div class="footer-row">
       <div class="footer-brand">
-        <a class="brand" href="#top">
-          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect class="frame" x="7" y="7" width="18" height="18" rx="1.5" transform="rotate(45 16 16)" stroke-width="2.6"/><path class="tick" d="M11.2 16.4l3.3 3.3 6.4-7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>msdsform<span class="tld">.com</span></span>
+        <a class="brand" href="#top" aria-label="msdsform ana sayfa">
+          <img class="logo-light" src="assets/logo.webp" width="640" height="176" alt="msdsform" loading="lazy">
+          <img class="logo-dark" src="assets/logo-dark.webp" width="640" height="176" alt="msdsform" loading="lazy">
         </a>
         <p>KKDİK Ek-2 ve SEA kriterlerine göre karışım sınıflandırması ve Güvenlik Bilgi Formu hazırlama sistemi.</p>
       </div>
@@ -989,6 +1005,18 @@ p{text-wrap:pretty}
         <a href="#kurumsal">Kurumsal</a>
         <a href="#iletisim">İletişim</a>
       </nav>
+    </div>
+    <div class="maker">
+      <span class="mono-label">Üretici firma</span>
+      <div class="maker-body">
+        <img class="maker-logo logo-light" src="assets/guska-logo.webp" width="480" height="126" alt="Guska Bilgisayar" loading="lazy">
+        <img class="maker-logo logo-dark" src="assets/guska-logo-dark.webp" width="480" height="126" alt="Guska Bilgisayar" loading="lazy">
+        <address>
+          <strong>Guska Bilgisayar Yazılım A.Ş.</strong>
+          Esentepe Mah. Büyükdere Cad. Özsezen İş Merkezi No:122 İç Kapı No:4<br>
+          Şişli / İstanbul
+        </address>
+      </div>
     </div>
     <div class="footer-meta">
       <span>© <span id="yil">2026</span> msdsform.com</span>
